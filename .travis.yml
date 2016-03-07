@@ -4,4 +4,4 @@ before_script:
   - bash /tmp/bats/install.sh /tmp/local
   - export PATH=$PATH:/tmp/local/bin
 script:
-  - bats test/*.bats
+  - bats test/unit-tests/*.bats

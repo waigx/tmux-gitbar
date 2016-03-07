@@ -6,7 +6,7 @@
 # github.com/aurelien-rainone/tmux-gitbar
 
 export MOCKREPO="${BATS_TMPDIR}/mock-repo"
-export ROOTDIR="${BATS_TEST_DIRNAME}/.."
+export ROOTDIR="${BATS_TEST_DIRNAME}/../.."
 
 create_test_repo() {
 
