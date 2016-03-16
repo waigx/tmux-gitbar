@@ -1,0 +1,54 @@
+#!/usr/bin/env expect -d
+
+set session_name test-session
+
+# disables script output
+log_user 0
+
+proc exit_session {} {
+  send "exit"
+  sleep 1
+  close
+}
+
+spawn tmux new-session -s "$session_name"
+
+# Waiting for tmux to launch and attach
+sleep 1
+
+# change the status string
+set cmd {tmux set -g status-right "[out of working tree]" }
+send "$cmd"
+
+#  +First, we still expect origin/master as we are in a git working tree and
+#   update_gitbar has just been ran through $PROMPT_COMMAND when ^M simulated
+#   ENTER
+#  +Then we change current directory to /, where we are sure that we are out of
+#   any working tree. We expect to have the newly status string shown
+#  +Change back to the git working tree
+expect {
+
+  "origin/master" {
+
+    send "cd /"
+
+    expect {
+
+      "out of working tree" {
+
+        send "cd -"
+
+        expect {
+
+          "origin/master" {
+            exit_session
+            exit 0
+          }
+        }
+      }
+    }
+  }
+}
+
+exit_session
+exit 1
