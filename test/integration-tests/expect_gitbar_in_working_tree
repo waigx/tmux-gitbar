@@ -1,0 +1,26 @@
+#!/usr/bin/env expect
+
+set session_name test-session
+
+# disables script output
+log_user 0
+
+proc exit_session {} {
+  send "exit"
+  sleep 1
+  close
+}
+
+spawn tmux new-session -s "$session_name"
+
+# Waiting for tmux to launch and attach
+sleep 1
+
+expect {
+  "origin/master" {
+    exit_session
+    exit 0
+  }
+}
+exit_session
+exit 1
