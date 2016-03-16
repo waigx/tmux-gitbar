@@ -1,0 +1,5 @@
+#!/usr/bin/env expect
+
+log_user 1
+log_file ./expect_to_work.log
+exit 0

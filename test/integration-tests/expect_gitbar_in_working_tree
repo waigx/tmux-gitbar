@@ -1,17 +1,15 @@
-#!/usr/bin/env expect
-
-set session_name test-session
+#!/usr/bin/env expect -d
 
 # disables script output
 log_user 0
 
 proc exit_session {} {
+  sleep .5
   send "exit"
-  sleep 1
   close
 }
 
-spawn tmux new-session -s "$session_name"
+spawn tmux -f $env(TMUXCONF)
 
 # Waiting for tmux to launch and attach
 sleep 1
