@@ -1,3 +1,6 @@
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -qq expect tmux
 before_script:
   - git clone https://github.com/sstephenson/bats.git /tmp/bats
   - mkdir -p /tmp/local
@@ -5,3 +8,4 @@ before_script:
   - export PATH=$PATH:/tmp/local/bin
 script:
   - bats test/unit-tests/*.bats
+  - bats test/integration-tests/*.bats
