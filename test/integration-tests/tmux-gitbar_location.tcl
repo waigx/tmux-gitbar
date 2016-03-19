@@ -5,10 +5,6 @@ source ./test/integration-tests/helpers/expect_setup.tcl
 set mockrepo $env(MOCKREPO)
 set tmgb_loc [lindex $argv 0]
 
-# what to test?
-# - in tree
-# - out of tree
-
 # move into our mock repo directory
 cd $mockrepo
 
