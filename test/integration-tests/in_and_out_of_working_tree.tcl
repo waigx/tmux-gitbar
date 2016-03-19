@@ -1,9 +1,6 @@
 #!/usr/bin/env expect -d
 
-# Trick to retrieve current script directory
-# TODO: do not understand why relative paths from repo root do not work
-set this_dir [file dirname [file normalize [info script]]]
-source $this_dir/helpers/expect_setup.tcl
+source ./test/integration-tests/helpers/expect_setup.tcl
 
 set mockrepo $env(MOCKREPO)
 
