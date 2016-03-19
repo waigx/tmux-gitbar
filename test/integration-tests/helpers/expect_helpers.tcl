@@ -15,7 +15,7 @@ proc exit_status_false {} {
 
 proc send_cd {dir} {
   send "cd $dir\r"
-  sleep 0.2
+  sleep 0.5
 }
 
 proc teardown_and_exit {} {
@@ -32,6 +32,18 @@ proc clear_screen {} {
 proc assert_on_screen {text message} {
   expect {
     "$text" {
+      puts "  Success: $message"
+    }
+    timeout {
+      puts "  Fail: $message"
+      exit_status_false
+    }
+  }
+}
+
+proc assert_on_screen_regex {text message} {
+  expect {
+    -re "$text" {
       puts "  Success: $message"
     }
     timeout {

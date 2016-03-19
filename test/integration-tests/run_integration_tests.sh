@@ -6,6 +6,5 @@ export TMUXCONF="$PWD/tmux.conf"
 > "${TMUXCONF}"
 echo TMUX_GITBAR_DIR=\"$PWD\" >> "${TMUXCONF}"
 echo source-file \"$PWD/tmux-gitbar.tmux\" >> "${TMUXCONF}"
-echo set-option -g status-right \"[out of working tree]\" >> "${TMUXCONF}"
 
 bats test/integration-tests/main.bats
