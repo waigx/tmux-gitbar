@@ -44,6 +44,7 @@ setup() {
 # output (see issue #23 for example)
 @test "PROMPT_COMMAND does not print nothing on terminal" {
 
+  set_option_in_tmux_conf 'status' 'off'
   expect -d "${BATS_TEST_DIRNAME}/no_extra_output.tcl"
 }
 
