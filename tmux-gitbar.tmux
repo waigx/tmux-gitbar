@@ -15,3 +15,5 @@ if-shell 'echo $PROMPT_COMMAND | grep -qv update-gitbar' \
   "if-shell 'test -z \"${TMUX_GITBAR_DIR}\"' \
     'PROMPT_COMMAND=\"~/.tmux-gitbar/update-gitbar; $PROMPT_COMMAND\"' \
     'PROMPT_COMMAND=\"$TMUX_GITBAR_DIR/update-gitbar; $PROMPT_COMMAND\"'"
+
+#if-shell 'tmux show-options -g default-shell | grep zsh' 'precmd() { eval "$PROMPT_COMMAND" }'
